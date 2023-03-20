@@ -66,7 +66,7 @@ function Login() {
                     </div>
                     <form onSubmit={formik.handleSubmit} className="user">
                       <div className="form-group">
-                        <label className="p-1 text-muted">User Name</label>x
+                        <label className="p-1 text-muted">Email</label>
                         <input
                           type={"email"}
                           className="form-control form-control-user mb-2"

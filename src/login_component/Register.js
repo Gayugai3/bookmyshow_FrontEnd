@@ -62,7 +62,7 @@ function Register() {
         );
         console.log(register.data);
         alert(register.data.message);
-        navigate("/login");
+        navigate("/auth/login");
       } catch (error) {
         console.log(error);
         alert(error.response.data.message);
@@ -72,9 +72,9 @@ function Register() {
   return (
     <div class="container  p-5">
       <div class="row d-flex justify-content-center  p-5">
-        <div class="col-md-6 col-md-offset-3 " >
+        <div class="col-md-6 col-md-offset-3 ">
           <div className="text-center">
-            <h1 className="h4text-gray-900 mb-4" >Register here</h1>
+            <h1 className="h4text-gray-900 mb-4">Register here</h1>
           </div>
           <form onSubmit={formik.handleSubmit}>
             <div className="row">
