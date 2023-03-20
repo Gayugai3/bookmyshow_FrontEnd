@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
-
+import * as Yup from "yup";
 import { config } from "./../Config";
 
 function Login() {
@@ -15,6 +15,12 @@ function Login() {
       email: "",
       password: "",
     },
+
+    validationSchema: Yup.object({
+      email: Yup.string().email().required("Required"),
+      password: Yup.string().required("Required"),
+    }),
+
     onSubmit: async (values) => {
       try {
         let login = await axios.post(`${config.api}/user/login`, values);
@@ -60,7 +66,7 @@ function Login() {
                     </div>
                     <form onSubmit={formik.handleSubmit} className="user">
                       <div className="form-group">
-                        <label className="p-1 text-muted">User Name</label>
+                        <label className="p-1 text-muted">User Name</label>x
                         <input
                           type={"email"}
                           className="form-control form-control-user mb-2"
@@ -69,6 +75,11 @@ function Login() {
                           onChange={formik.handleChange}
                           placeholder="Enter Email Id..."
                         />
+                        {formik.errors.email ? (
+                          <span style={{ color: "red" }}>
+                            {formik.errors.email}
+                          </span>
+                        ) : null}
                       </div>
                       <div className="form-group">
                         <label className="p-1 text-muted">Password</label>
@@ -80,6 +91,11 @@ function Login() {
                           value={formik.values.password}
                           placeholder="Enter Password..."
                         />
+                        {formik.errors.password ? (
+                          <span style={{ color: "red" }}>
+                            {formik.errors.password}
+                          </span>
+                        ) : null}
                       </div>
                       <button
                         // onClick={() => userContextData.setIsvisible(true)}

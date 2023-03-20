@@ -6,7 +6,7 @@ import { config } from "./../Config";
 import { toast } from "react-toastify";
 import UserContext from "../context/UserContext";
 
-function Booknow() {
+function Booknow({ mve_id }) {
   const userContextData = useContext(UserContext);
 
   const email = localStorage.getItem("email");
@@ -15,22 +15,26 @@ function Booknow() {
 
   const [data, setData] = useState([]);
 
-  // const [theatre, setTheatre] = useState("");
+  const [theatre, setTheatre] = useState([]);
+
   // const [show, setShow] = useState([]);
   // const [price, setPrice] = useState("");
 
   const getDetails = async () => {
     try {
       const details = await axios.get(`${config.api}/theatres/alldetails`);
+      console.log(details);
       if (details) {
         // const data = details.data.newdetails;
         // const data1 = data.filter((a, b) => data.indexOf(a) == b);
 
         // console.log(data1, data);
+        console.log("Success");
+        console.log(details.data.showdetails);
+        setData(details.data.showdetails);
+        setTheatre(details.data.name);
 
-        console.log(details.data);
-        // setData(data);
-        toast.success("Success");
+        toast.success("Got the data");
       } else {
         toast.error("Movies not found");
       }
@@ -39,8 +43,27 @@ function Booknow() {
     }
   };
 
+  // const getTheatres = async () => {
+  //   try {
+  //     const detail = await axios.get(`${config.api}/theatres/alltheatres`);
+  //     console.log(detail);
+  //     if (detail) {
+  //       // console.log("Success");
+  //       console.log(detail.data);
+  //       setTheatre(detail.data);
+
+  //       toast.success("Got the data");
+  //     } else {
+  //       toast.error("Movies not found");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
     getDetails();
+    // getTheatres();
   }, []);
 
   const formik = useFormik({
@@ -48,22 +71,18 @@ function Booknow() {
       book_date: "",
       theatre_name: "",
       show_name: "",
-      // show_time: "",
     },
 
     onSubmit: async (values) => {
-      // localStorage.setItem("show_time", values.show_time);
-
       console.log(values);
       try {
         const bookings = await axios.post(
-          `${config.api}/bookings/bookticket/${email}`,
+          `${config.api}/bookings/bookticket/${email}/${mve_id}`,
           values
         );
+        console.log(bookings);
 
-        userContextData.setBookingDetails(values);
-
-        // console.log(bookings.data.bookingdata.insertedId);
+        userContextData.setBookingDetails(bookings.data);
 
         navigate("/mainpage/seatbooking/");
       } catch (error) {
@@ -92,29 +111,7 @@ function Booknow() {
                 ></input>
               </td>
             </tr>
-            <tr>
-              <th scope="col">Choose theatre</th>
-              <td>
-                <select
-                  className="form-control"
-                  name="theatre_name"
-                  id="theatre"
-                  onChange={formik.handleChange}
-                >
-                  <option value="">--Please choose an option--</option>
-                  {data.map((det) => {
-                    return (
-                      <option
-                        // name="theatre_name"
-                        value={det.theatre_name}
-                      >
-                        {det.theatre_name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </td>
-            </tr>
+
             <tr>
               <th scope="col">Choose Show</th>
               <td>
@@ -126,13 +123,34 @@ function Booknow() {
                 >
                   <option value="">--Please choose an option--</option>
                   {data.map((det) => {
-                    console.log(formik.values);
+                    console.log(formik.values.show_name);
                     return (
-                      <option
-                        // name="show_name"
-                        value={`${det.show_name} - ${det.show_time}`}
-                      >
-                        {`${det.show_name} - ${det.show_time}`}
+                      <option value={det}>
+                        {console.log(det)}
+                        {det}
+                      </option>
+                    );
+                  })}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Choose theatre</th>
+              <td>
+                <select
+                  className="form-control"
+                  name="theatre_name"
+                  id="theatre"
+                  onChange={formik.handleChange}
+                >
+                  <option value="">--Please choose an option--</option>
+                  {/* <option value={data[0]}>{`Hai ${data}`} </option> */}
+                  {console.log(theatre)}
+                  {theatre.map((det) => {
+                    return (
+                      <option value={det}>
+                        {console.log(det)}
+                        {det}
                       </option>
                     );
                   })}

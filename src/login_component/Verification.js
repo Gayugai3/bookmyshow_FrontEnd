@@ -29,7 +29,7 @@ function Verification() {
 
         if (res.data) {
           alert("Verified ✅");
-          navigate("/changepassword");
+          navigate("/auth/changepassword");
         } else {
           alert(res.data.message);
         }

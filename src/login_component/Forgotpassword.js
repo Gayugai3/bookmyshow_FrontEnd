@@ -20,7 +20,7 @@ function ForgetPassword() {
         let mail = await axios.post(`${config.api}/user/sendmail`, values);
         if (mail.data) {
           alert(`${mail.data.message}`);
-          navigate("/verification");
+          navigate("/auth/verification");
         } else {
           alert(mail.data.message);
         }

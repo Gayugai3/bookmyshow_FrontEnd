@@ -40,7 +40,11 @@ function MovieCards() {
             return (
               <div className="col-lg-3">
                 <Card
-                  style={{ width: "13rem", marginLeft: "10%", marginTop: "2%" }}
+                  style={{
+                    width: "13.3rem",
+                    marginLeft: "10%",
+                    marginTop: "2%",
+                  }}
                 >
                   <Card.Img
                     variant="top"

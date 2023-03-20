@@ -28,6 +28,7 @@ function ViewDetails() {
     }
   };
   console.log(movieData);
+  console.log(movieData.mve_name);
   useEffect(() => {
     getMovies();
   }, []);
@@ -102,7 +103,7 @@ function ViewDetails() {
               </tbody>
             </table>
             {userContextData.isvisible ? (
-              <Booknow />
+              <Booknow mve_id={id} />
             ) : (
               <table>
                 <tbody>

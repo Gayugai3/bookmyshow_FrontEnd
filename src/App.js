@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import "./sb-admin-2.min.css";
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Portal from "./pages/Portal";
 import Dashboard from "./admin_components/Dashboard";
 
@@ -33,6 +34,7 @@ import Mybookings from "./user_pages/Mybookings";
 import SelectSeats from "./user_pages/SelectSeats";
 import MovieTrailer from "./pages/MovieTrailer";
 import Seatbooking from "./user_pages/Seatbooking";
+import PrintTicket from "./user_pages/PrintTicket";
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="mybookings" element={<Mybookings />} />
               <Route path="seatbooking" element={<Seatbooking />} />
+              <Route path="printticket" element={<PrintTicket />} />
             </Route>
 
             {/* Routes for login & register page */}

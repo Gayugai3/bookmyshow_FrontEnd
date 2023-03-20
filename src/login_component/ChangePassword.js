@@ -65,7 +65,7 @@ function ChangePassword() {
         );
         console.log(register.data);
         alert(register.data.message);
-        navigate("/login");
+        navigate("/auth/login");
       } catch (error) {
         console.log(error);
         alert(error.response.data.message);
@@ -177,7 +177,7 @@ function ChangePassword() {
               type={"submit"}
               className="btn btn-primary btn-user btn-block m-2"
             >
-              Register
+              Submit
             </button>
           </div>
         </div>

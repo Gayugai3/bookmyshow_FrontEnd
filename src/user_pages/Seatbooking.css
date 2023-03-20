@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+.container-fluid {
+  padding: 0;
+}
+section {
+  background-color: #242333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 100vh;
+  /* width: 198vh;  */
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0 !important;
+}
+
+.container {
+  perspective: 1000px;
+  /* margin-bottom: 30px; */
+}
+
+.colnumber {
+  background-color: #444451;
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.firstrow {
+  display: flex;
+  margin-left: 10%;
+}
+
+.seatrow {
+  display: flex;
+  margin-left: 10%;
+}
+
+.backrow {
+  display: flex;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+.col-numbers {
+  display: flex;
+  margin-left: 10%;
+  margin-bottom: 3%;
+}
+.row-numbers {
+  display: flex;
+  height: 20px;
+  width: 10px;
+  /* margin-left: 10%; */
+  margin-top: 2%;
+  flex-direction: column;
+}
+.rownumber {
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+  /* margin-top: 28px; */
+}
+
+.seat {
+  background-color: #444451;
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat.selected {
+  background-color: #6feaf6;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+
+.colnumber:nth-of-type(5) {
+  margin-right: 18px;
+}
+.colnumber:nth-last-of-type(5) {
+  margin-left: 18px;
+}
+
+.rownumber:nth-last-of-type(6) {
+  margin-bottom: 28px;
+}
+
+.rownumber:nth-of-type(1) {
+  margin-top: 28px;
+}
+
+.seat:nth-of-type(5) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(5) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.screen {
+  background-color: #fff;
+  height: 70px;
+  width: 85%;
+  /* margin: 15px; */
+  margin-bottom: 8%;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.allseats {
+  margin-left: 6%;
+}
